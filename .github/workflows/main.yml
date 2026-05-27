@@ -9,7 +9,7 @@ jobs:
 deploy:
 runs-on: ubuntu-latest
 
-```
+
 steps:
   - name: Connect to EC2
     uses: appleboy/ssh-action@master
@@ -23,5 +23,4 @@ steps:
         git pull
         docker compose down
         docker compose up -d --build
-```
 
