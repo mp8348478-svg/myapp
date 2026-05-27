@@ -1,15 +1,27 @@
-name: My First Workflow
+name: EC2 Deploy
 
 on:
-  push:
-    branches:
-      - main
+push:
+branches:
+- main
 
 jobs:
-  first-job:
-    runs-on: ubuntu-latest
+deploy:
+runs-on: ubuntu-latest
 
-    steps:
-      - name: First Step
-        run: echo "Hello DevOps"
+```
+steps:
+  - name: Connect to EC2
+    uses: appleboy/ssh-action@master
+    with:
+      host: YOUR-EC2-IP
+      username: ec2-user
+      key: ${{ secrets.EC2_SSH_KEY }}
+
+      script: |
+        cd myapp
+        git pull
+        docker compose down
+        docker compose up -d --build
+```
 
