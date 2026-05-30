@@ -12,7 +12,7 @@ jobs:
       - name: Connect to EC2
         uses: appleboy/ssh-action@master
         with:
-          host:98.87.4.247
+          host: 98.87.4.247
           username: ec2-user
           key: ${{ secrets.EC2_SSH_KEY }}
 
